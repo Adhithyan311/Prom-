@@ -1,0 +1,17 @@
+:root{
+  --bg-void:#1B1210;
+  --bg-void-2:#241713;
+  --paper:#F2E8D3;
+  --paper-light:#FBF6EA;
+  --ink:#2B1F16;
+  --cream-text:#E9DCC3;
+  --muted:#9C8B72;
+  --gold:#D9A94C;
+  --gold-dim:#B98F3E;
+  --maroon:#6E2A3B;
+  --maroon-light:#8A3D4E;
+  --hairline:rgba(217,169,76,0.25);
+  --radius:8px;
+  --serif:'Playfair Display', serif;
+  --sans:'Inter', sans-serif;
+}

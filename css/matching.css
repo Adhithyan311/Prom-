@@ -1,0 +1,1250 @@
+/* ============================================================
+   PELÍCULA · PROM NIGHT
+   MATCHING.CSS
+   Manual + Automatic Matching
+   ============================================================ */
+
+
+/* ============================================================
+   MANUAL MATCHING MODE CHIPS
+   ============================================================ */
+
+.match-type-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.mt-chip {
+    font-size: 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.mt-chip.selected {
+    background: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
+}
+
+
+/* ============================================================
+   MANUAL MATCHING STUDIO
+   ============================================================ */
+
+.curate-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, .8fr) minmax(0, 1fr);
+    gap: 16px;
+    margin-top: 22px;
+    width: 100%;
+}
+
+.lead-card {
+    background: var(--bg-void-2);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 18px;
+    min-width: 0;
+}
+
+.lead-card .idrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 9.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 10px;
+}
+
+.lead-card .search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--hairline);
+    background: var(--bg-void);
+    color: var(--cream-text);
+    font-size: 12.5px;
+    margin-bottom: 14px;
+    outline: none;
+}
+
+.lead-card .search:focus {
+    border-color: var(--gold);
+}
+
+.lead-profile {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.lead-profile .ph {
+    width: 52px;
+    height: 52px;
+    border-radius: 6px;
+    background: linear-gradient(
+        150deg,
+        #3a2a22,
+        #1c1310
+    );
+    flex-shrink: 0;
+}
+
+.lead-profile h4 {
+    font-family: var(--serif);
+    font-size: 16px;
+    margin: 0;
+    color: var(--cream-text);
+    overflow-wrap: anywhere;
+}
+
+.lead-profile .role {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.lead-dl {
+    margin-top: 14px;
+    font-size: 11.5px;
+}
+
+.lead-dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--hairline);
+    color: var(--muted);
+}
+
+.lead-dl b {
+    color: var(--cream-text);
+    font-weight: 500;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.lead-tags {
+    margin-top: 12px;
+}
+
+
+/* ============================================================
+   AFFINITY / CENTER CARD
+   ============================================================ */
+
+.affinity-card {
+    background: var(--bg-void-2);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    min-width: 0;
+}
+
+.affinity-lbl {
+    font-size: 9.5px;
+    letter-spacing: .1em;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.gauge {
+    width: 120px;
+    height: 120px;
+    margin: 14px auto;
+    position: relative;
+}
+
+.gauge svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.gauge .pct {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gauge .pct b {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--gold);
+}
+
+.gauge .pct span {
+    font-size: 8px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.bar-row {
+    text-align: left;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 12px;
+}
+
+.bar-row .top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.bar-track {
+    height: 5px;
+    background: var(--bg-void);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: inherit;
+}
+
+.aff-quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--cream-text);
+    margin: 16px 0;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   STUDENT SELECT DROPDOWNS
+   ============================================================ */
+
+.search-select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--hairline);
+    background: var(--bg-void);
+    color: var(--cream-text);
+    font-size: 12.5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.search-select:focus {
+    border-color: var(--gold);
+}
+
+.search-select option {
+    background: var(--bg-void-2);
+    color: var(--cream-text);
+}
+
+
+/* ============================================================
+   FILTER CHIPS
+   ============================================================ */
+
+.filter-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.filter-chip {
+    font-size: 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+.filter-chip:hover {
+    color: var(--cream-text);
+    border-color: var(--gold);
+}
+
+.filter-chip.active {
+    background: var(--maroon);
+    color: var(--cream-text);
+    border-color: var(--maroon);
+}
+
+
+/* ============================================================
+   MATCH CARDS
+   ============================================================ */
+
+.match-card {
+    background: var(--bg-void-2);
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 14px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.match-card .pair {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex: 1;
+    min-width: 280px;
+}
+
+.match-card .cand {
+    flex: 1;
+    min-width: 0;
+}
+
+.match-card .cand h4 {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--cream-text);
+    margin: 0 0 2px;
+    overflow-wrap: anywhere;
+}
+
+.match-card .cand p {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.match-card .versus {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--gold);
+    font-style: italic;
+    flex-shrink: 0;
+}
+
+
+/* ============================================================
+   MATCHING MODE SWITCH
+   ============================================================ */
+
+.matching-mode-switch {
+    width: 100%;
+    margin-top: 22px;
+    margin-bottom: 20px;
+}
+
+.matching-mode-label {
+    margin-bottom: 9px;
+
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+.matching-mode-buttons {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 4px;
+
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+
+    background: var(--bg-void-2);
+}
+
+.matching-mode-btn {
+    appearance: none;
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+    color: var(--muted);
+
+    padding: 10px 18px;
+
+    border-radius: 999px;
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 500;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .15s ease;
+}
+
+.matching-mode-btn:hover {
+    color: var(--cream-text);
+}
+
+.matching-mode-btn.active {
+    background: var(--gold);
+    color: var(--ink);
+}
+
+.matching-mode-btn:active {
+    transform: scale(.97);
+}
+
+.matching-mode-btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--gold);
+}
+
+
+/* ============================================================
+   AUTOMATIC MATCHING ROOT
+   ============================================================ */
+
+#automatic-matching-root {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 22px;
+    box-sizing: border-box;
+}
+
+#automatic-matching-root[hidden] {
+    display: none !important;
+}
+
+
+/* ============================================================
+   AUTOMATIC MATCHING CONTAINERS
+   ============================================================ */
+
+.automatic-empty,
+.automatic-results {
+    width: 100%;
+    box-sizing: border-box;
+
+    background: var(--bg-void-2);
+
+    border: 1px solid var(--hairline);
+
+    border-radius: 10px;
+
+    padding: 24px;
+}
+
+
+/* ============================================================
+   AUTOMATIC MATCHING TITLE
+   ============================================================ */
+
+.automatic-title {
+    font-family:
+        var(--font-display,
+        "Cormorant Garamond",
+        serif);
+
+    font-size: 22px;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+
+    color: var(--gold);
+
+    line-height: 1.2;
+}
+
+.automatic-description {
+    margin-top: 10px;
+
+    max-width: 680px;
+
+    color: var(--muted);
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+.automatic-rule-note {
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.automatic-empty .btn {
+    margin-top: 20px;
+}
+
+
+/* ============================================================
+   AUTOMATIC RESULTS HEADER
+   ============================================================ */
+
+.automatic-results-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.automatic-count {
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   AUTOMATIC SUMMARY
+   ============================================================ */
+
+.automatic-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.automatic-summary-item {
+    padding: 12px;
+
+    border:
+        1px solid
+        var(--hairline);
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, .02);
+
+    min-width: 0;
+}
+
+.automatic-summary-item span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: .1em;
+
+    text-transform: uppercase;
+}
+
+.automatic-summary-item strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--cream-text);
+
+    font-family: var(--serif);
+
+    font-size: 20px;
+}
+
+
+/* ============================================================
+   UNMATCHED STUDENTS NOTICE
+   ============================================================ */
+
+.automatic-unmatched {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-bottom: 20px;
+
+    padding: 14px 16px;
+
+    border:
+        1px solid
+        var(--hairline);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255, 255, 255, .025);
+
+    box-sizing: border-box;
+}
+
+.automatic-unmatched strong {
+    color: var(--cream-text);
+
+    font-size: 14px;
+}
+
+.automatic-unmatched span {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   AUTOMATIC PAIRS
+   ============================================================ */
+
+.automatic-pairs {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    width: 100%;
+}
+
+.auto-pair-card {
+    border:
+        1px solid
+        var(--hairline);
+
+    border-radius: 9px;
+
+    padding: 18px;
+
+    background:
+        var(--bg-void);
+
+    box-sizing: border-box;
+}
+
+.auto-pair-number {
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 14px;
+}
+
+
+/* ============================================================
+   AUTOMATIC PAIR LAYOUT
+   ============================================================ */
+
+.auto-pair {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto
+        minmax(0, 1fr);
+
+    gap: 18px;
+
+    align-items: center;
+}
+
+.auto-person {
+    min-width: 0;
+}
+
+.auto-gender-label {
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 8px;
+}
+
+.auto-heart {
+    color: var(--gold);
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    text-align: center;
+}
+
+.auto-student {
+    min-width: 0;
+}
+
+.auto-student-name {
+    color: var(--cream-text);
+
+    font-family:
+        var(--font-display,
+        "Cormorant Garamond",
+        serif);
+
+    font-size: 24px;
+
+    line-height: 1.1;
+
+    overflow-wrap: anywhere;
+}
+
+.auto-student-meta,
+.auto-student-movie,
+.auto-student-instagram {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+.auto-student-movie {
+    color: var(--cream-text);
+}
+
+
+/* ============================================================
+   MATCHING BASIS
+   ============================================================ */
+
+.auto-basis {
+    margin-top: 18px;
+
+    padding-top: 14px;
+
+    border-top:
+        1px solid
+        var(--hairline);
+}
+
+.auto-basis-title {
+    font-size: 9px;
+
+    letter-spacing: .14em;
+
+    color: var(--muted);
+
+    text-transform: uppercase;
+
+    margin-bottom: 8px;
+}
+
+.auto-basis-items {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+.auto-basis-chip {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border:
+        1px solid
+        var(--hairline);
+
+    border-radius: 999px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   AUTOMATIC ACTIONS
+   ============================================================ */
+
+.automatic-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+    flex-wrap: wrap;
+}
+
+.automatic-actions .btn {
+    min-height: 40px;
+}
+
+.automatic-empty-message {
+    margin-top: 16px;
+
+    color: var(--muted);
+
+    line-height: 1.6;
+
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   AUTOMATIC MATCHING STATUS STATES
+   ============================================================ */
+
+.automatic-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 6px 10px;
+
+    border:
+        1px solid
+        var(--hairline);
+
+    border-radius: 999px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: .1em;
+
+    text-transform: uppercase;
+}
+
+.automatic-status.ready {
+    color: var(--gold);
+
+    border-color:
+        rgba(218, 168, 70, .45);
+}
+
+.automatic-status.warning {
+    color: var(--cream-text);
+
+    border-color:
+        rgba(255, 255, 255, .18);
+}
+
+
+/* ============================================================
+   AUTOMATIC RUN BUTTON
+   ============================================================ */
+
+#run-automatic-matching,
+#automatic-match-btn,
+.automatic-run-btn {
+    min-height: 42px;
+}
+
+
+/* ============================================================
+   AUTOMATIC CONFIRMATION / CREATE BUTTON
+   ============================================================ */
+
+#confirm-automatic-matches,
+#apply-automatic-matches,
+.automatic-apply-btn {
+    min-height: 42px;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+    .curate-grid {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(220px, .75fr)
+            minmax(0, 1fr);
+
+        gap: 12px;
+    }
+
+    .lead-card {
+        padding: 15px;
+    }
+
+    .affinity-card {
+        padding: 16px;
+    }
+
+    .auto-student-name {
+        font-size: 21px;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE — 760px
+   ============================================================ */
+
+@media (max-width: 760px) {
+
+    .curate-grid {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 18px;
+    }
+
+    .lead-card,
+    .affinity-card {
+        width: 100%;
+    }
+
+    .match-card .pair {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .automatic-summary {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE — 640px
+   ============================================================ */
+
+@media (max-width: 640px) {
+
+    /* -----------------------------------------
+       MATCHING MODE SWITCH
+    ----------------------------------------- */
+
+    .matching-mode-switch {
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+
+    .matching-mode-buttons {
+        width: 100%;
+
+        display: flex;
+
+        box-sizing: border-box;
+    }
+
+    .matching-mode-btn {
+        flex: 1;
+
+        min-width: 0;
+
+        padding:
+            10px 8px;
+
+        font-size: 9px;
+
+        white-space: nowrap;
+    }
+
+
+    /* -----------------------------------------
+       MANUAL STUDIO
+    ----------------------------------------- */
+
+    .curate-grid {
+        grid-template-columns: 1fr;
+
+        width: 100%;
+
+        gap: 12px;
+    }
+
+    .lead-card {
+        padding: 15px;
+    }
+
+    .affinity-card {
+        padding: 15px;
+    }
+
+    .lead-card .idrow {
+        flex-wrap: wrap;
+    }
+
+    .lead-dl div {
+        align-items: flex-start;
+    }
+
+
+    /* -----------------------------------------
+       AUTOMATIC CONTAINERS
+    ----------------------------------------- */
+
+    .automatic-empty,
+    .automatic-results {
+        padding: 16px;
+
+        border-radius: 8px;
+    }
+
+
+    /* -----------------------------------------
+       AUTOMATIC HEADER
+    ----------------------------------------- */
+
+    .automatic-results-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .automatic-results-header .btn {
+        width: 100%;
+    }
+
+    .automatic-title {
+        font-size: 19px;
+
+        letter-spacing: .09em;
+    }
+
+    .automatic-description {
+        font-size: 13px;
+
+        line-height: 1.55;
+    }
+
+
+    /* -----------------------------------------
+       SUMMARY
+    ----------------------------------------- */
+
+    .automatic-summary {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+    .automatic-summary-item {
+        padding: 11px;
+    }
+
+
+    /* -----------------------------------------
+       PAIRS
+    ----------------------------------------- */
+
+    .auto-pair {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .auto-pair-card {
+        padding: 15px;
+    }
+
+    .auto-heart {
+        text-align: center;
+
+        transform: rotate(90deg);
+    }
+
+    .auto-student-name {
+        font-size: 22px;
+    }
+
+
+    /* -----------------------------------------
+       ACTIONS
+    ----------------------------------------- */
+
+    .automatic-actions {
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .automatic-actions .btn {
+        width: 100%;
+    }
+
+
+    /* -----------------------------------------
+       MATCH CARDS
+    ----------------------------------------- */
+
+    .match-card {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 15px;
+    }
+
+    .match-card .pair {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    .match-card .versus {
+        align-self: center;
+    }
+
+}
+
+
+/* ============================================================
+   SMALL PHONES — 480px
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    .matching-mode-buttons {
+        padding: 3px;
+    }
+
+    .matching-mode-btn {
+        padding:
+            9px 6px;
+
+        font-size: 8.5px;
+
+        letter-spacing: .05em;
+    }
+
+    .automatic-empty,
+    .automatic-results {
+        padding: 13px;
+    }
+
+    .automatic-title {
+        font-size: 18px;
+    }
+
+    .automatic-rule-note {
+        font-size: 11px;
+    }
+
+    .auto-pair-card {
+        padding: 13px;
+    }
+
+    .auto-student-name {
+        font-size: 20px;
+    }
+
+    .auto-student-meta,
+    .auto-student-movie,
+    .auto-student-instagram {
+        font-size: 11.5px;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES — 360px
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+    .matching-mode-btn {
+        padding:
+            8px 4px;
+
+        font-size: 7.5px;
+
+        letter-spacing: .035em;
+    }
+
+    .automatic-title {
+        font-size: 17px;
+
+        letter-spacing: .07em;
+    }
+
+    .automatic-empty,
+    .automatic-results {
+        padding: 11px;
+    }
+
+    .auto-student-name {
+        font-size: 19px;
+    }
+
+    .auto-pair-card {
+        padding: 11px;
+    }
+
+}
