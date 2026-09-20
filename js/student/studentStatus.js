@@ -1,5 +1,6 @@
 import { updateNavState } from "../ui/components.js";
 import { initLookupForm } from "../auth/studentAuth.js";
+import { downloadTicketPass } from "./studentMatch.js";
 
 /**
  * Same Scene — Student Status
@@ -350,13 +351,20 @@ function renderWaitingStudent(student) {
 
 
   /*
-   * Favourite movie.
+   * Movie preferences.
    */
 
-  setText(
-    "um-cand-movie",
-    student.favourite_movie || "—"
-  );
+  const parts = (student.favourite_movie || "").split(/ · |\/|,/);
+  const thriller = student.thriller_preference || parts[0]?.trim() || "—";
+  const romance = student.romance_preference || parts[1]?.trim() || "—";
+  const emotional = student.emotional_preference || parts[2]?.trim() || "—";
+  const action = student.action_preference || parts[3]?.trim() || "—";
+
+  setText("um-cand-thriller", thriller);
+  setText("um-cand-romance", romance);
+  setText("um-cand-emotional", emotional);
+  setText("um-cand-action", action);
+  setText("um-cand-movie", student.favourite_movie || "—");
 
 
   /*
@@ -513,7 +521,7 @@ function addAccessCodeWarning() {
       <div class="access-code-warning-recovery">
         Forgot your code?
         You can recover it using your
-        <strong>Instagram ID + Favourite Movie.</strong>
+        <strong>Instagram ID + Movie Preferences.</strong>
       </div>
 
     </div>
@@ -693,107 +701,79 @@ async function renderPublishedMatch(student) {
 
 
     /* =====================================================
-       CURRENT STUDENT
+       CURRENT STUDENT (CARD A)
        ===================================================== */
+    setText("m-name-a", student.name);
+    setText("m-dept-a", `${student.semester || 'S7'} • ${student.department || ''}`);
+    setText("m-insta-a", student.instagram_id ? `@${String(student.instagram_id).replace(/^@+/, "")}` : "—");
 
-    setText(
-      "m-name-a",
-      student.name
-    );
+    const vibesBoxA = document.getElementById("m-vibes-a");
+    if (vibesBoxA) {
+      const partsA = (student.favourite_movie || "").split(/ · |\/|,/).map(s => s.trim()).filter(Boolean);
+      const moviesA = [
+        student.thriller_preference,
+        student.romance_preference,
+        student.emotional_preference,
+        student.action_preference
+      ].filter(Boolean);
 
-    setText(
-      "m-dept-a",
-      student.department
-    );
-
-    setText(
-      "m-movie-a",
-      student.favourite_movie || "—"
-    );
-
-    setText(
-      "m-insta-a",
-      student.instagram_id
-        ? `@${String(
-            student.instagram_id
-          ).replace(/^@+/, "")}`
-        : "—"
-    );
+      const finalMoviesA = moviesA.length ? moviesA : partsA;
+      if (finalMoviesA.length) {
+        vibesBoxA.innerHTML = finalMoviesA.map(m => `<span class="vibe-pill">${escapeHtml(m)}</span>`).join("");
+      } else {
+        vibesBoxA.innerHTML = `<span class="vibe-pill">${escapeHtml(student.favourite_movie || "Película Selection")}</span>`;
+      }
+    }
 
 
     /* =====================================================
-       MATCHED STUDENT
+       MATCHED STUDENT (CARD B)
        ===================================================== */
+    setText("m-name-b", partner.name);
+    setText("m-dept-b", `${partner.semester || 'S5'} • ${partner.department || ''}`);
+    setText("m-insta-b", partner.instagram_id ? `@${String(partner.instagram_id).replace(/^@+/, "")}` : "—");
 
-    setText(
-      "m-name-b",
-      partner.name
-    );
+    const vibesBoxB = document.getElementById("m-vibes-b");
+    if (vibesBoxB) {
+      const partsB = (partner.favourite_movie || "").split(/ · |\/|,/).map(s => s.trim()).filter(Boolean);
+      const moviesB = [
+        partner.thriller_preference,
+        partner.romance_preference,
+        partner.emotional_preference,
+        partner.action_preference
+      ].filter(Boolean);
 
-    setText(
-      "m-dept-b",
-      partner.department
-    );
-
-    setText(
-      "m-movie-b",
-      partner.favourite_movie || "—"
-    );
-
-    setText(
-      "m-insta-b",
-      partner.instagram_id
-        ? `@${String(
-            partner.instagram_id
-          ).replace(/^@+/, "")}`
-        : "—"
-    );
-
-
+      const finalMoviesB = moviesB.length ? moviesB : partsB;
+      if (finalMoviesB.length) {
+        vibesBoxB.innerHTML = finalMoviesB.map(m => `<span class="vibe-pill">${escapeHtml(m)}</span>`).join("");
+      } else {
+        vibesBoxB.innerHTML = `<span class="vibe-pill">${escapeHtml(partner.favourite_movie || "Película Selection")}</span>`;
+      }
+    }
     /* =====================================================
-       OLD FIELDS
+       SCROLL TO MATCH PROFILE BUTTON
        ===================================================== */
 
-    setText(
-      "m-genre-a",
-      "—"
-    );
+    const btnScrollToProfile =
+      document.getElementById(
+        "btnScrollToMatchProfile"
+      );
 
-    setText(
-      "m-genre-b",
-      "—"
-    );
-
-    setText(
-      "m-music-a",
-      "—"
-    );
-
-    setText(
-      "m-music-b",
-      "—"
-    );
-
-    setText(
-      "m-score-pct",
-      "—"
-    );
-
-    setText(
-      "m-cohesion-idx",
-      "—"
-    );
-
-
-    setText(
-      "m-seats-summary",
-      "Your Scene"
-    );
-
-    setText(
-      "m-ticket-serial",
-      "Published Match"
-    );
+    if (btnScrollToProfile) {
+      btnScrollToProfile.onclick = (e) => {
+        e.preventDefault();
+        const section = document.getElementById("m-profile-section");
+        if (section) {
+          const navHeight = document.querySelector(".editorial-nav")?.offsetHeight || 75;
+          const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navHeight;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      };
+    }
 
 
     /* =====================================================
@@ -823,6 +803,17 @@ async function renderPublishedMatch(student) {
             "#FFFFFF";
 
         };
+    }
+
+    /* =====================================================
+       DOWNLOAD TICKET PASS
+       ===================================================== */
+    const btnDownloadTicket = document.getElementById("btnDownloadTicket");
+    if (btnDownloadTicket) {
+      btnDownloadTicket.onclick = (e) => {
+        e.preventDefault();
+        downloadTicketPass(student, partner, match);
+      };
     }
 
 

@@ -24,24 +24,47 @@
 
 
 -- ============================================================
+-- 0. ADD MOVIE PREFERENCE COLUMNS TO STUDENTS TABLE
+-- ============================================================
+
+alter table public.students add column if not exists thriller_preference text;
+alter table public.students add column if not exists romance_preference text;
+alter table public.students add column if not exists emotional_preference text;
+alter table public.students add column if not exists action_preference text;
+
+-- Add safe CHECK constraints for allowed movie values (allowing NULL for legacy records)
+alter table public.students drop constraint if exists chk_thriller_preference;
+alter table public.students add constraint chk_thriller_preference
+    check (thriller_preference is null or thriller_preference in ('Anjaam Pathiraa', 'Memories'));
+
+alter table public.students drop constraint if exists chk_romance_preference;
+alter table public.students add constraint chk_romance_preference
+    check (romance_preference is null or romance_preference in ('Thattathin Marayathu', 'Ohm Shanthi Oshaana'));
+
+alter table public.students drop constraint if exists chk_emotional_preference;
+alter table public.students add constraint chk_emotional_preference
+    check (emotional_preference is null or emotional_preference in ('Akashadoothu', 'Thanmathra'));
+
+alter table public.students drop constraint if exists chk_action_preference;
+alter table public.students add constraint chk_action_preference
+    check (action_preference is null or action_preference in ('Dhruvam', 'Narasimham'));
+
+
+-- ============================================================
 -- 1. RECOVER STUDENT ACCESS CODE
 -- ============================================================
---
--- Returns the access code for the student whose Instagram ID
--- and Favourite Movie match (case-insensitive, leading "@"
--- ignored). Returns zero rows if there is no match.
---
--- NOTE (see audit report, High Issue 6): recovering a
--- credential from Instagram ID + Favourite Movie alone is a
--- weak recovery mechanism, since both can be semi-public
--- information about a student. Consider rate-limiting calls
--- to this function (e.g. via an Edge Function in front of it)
--- before relying on it at event scale.
--- ============================================================
+
+-- Safely drop old overloads if existing in database
+drop function if exists public.recover_student_access_code(text, text);
+drop function if exists public.recover_student_access_code(text, text, text, text);
+drop function if exists public.recover_student_access_code(text, text, text, text, text);
 
 create or replace function public.recover_student_access_code(
     p_instagram_id text,
-    p_favourite_movie text
+    p_thriller_preference text,
+    p_romance_preference text,
+    p_emotional_preference text,
+    p_action_preference text
 )
 returns table (
     access_code text
@@ -63,15 +86,23 @@ as $$
         lower(trim(leading '@' from trim(s.instagram_id)))
             = lower(trim(leading '@' from trim(p_instagram_id)))
 
-        and lower(trim(s.favourite_movie))
-            = lower(trim(p_favourite_movie))
+        and (
+            (
+                lower(trim(coalesce(s.thriller_preference, ''))) = lower(trim(p_thriller_preference))
+                and lower(trim(coalesce(s.romance_preference, ''))) = lower(trim(p_romance_preference))
+                and lower(trim(coalesce(s.emotional_preference, ''))) = lower(trim(p_emotional_preference))
+                and lower(trim(coalesce(s.action_preference, ''))) = lower(trim(p_action_preference))
+            )
+            or
+            lower(trim(coalesce(s.favourite_movie, ''))) = lower(trim(p_thriller_preference || ' · ' || p_romance_preference || ' · ' || p_emotional_preference || ' · ' || p_action_preference))
+        )
 
     limit 1;
 
 $$;
 
 grant execute
-on function public.recover_student_access_code(text, text)
+on function public.recover_student_access_code(text, text, text, text, text)
 to anon, authenticated;
 
 

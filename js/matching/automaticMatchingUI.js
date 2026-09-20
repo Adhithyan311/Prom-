@@ -93,6 +93,10 @@ function renderStudent(student) {
       .trim()
       .replace(/^@/, "");
 
+  const movieText = student?.favourite_movie ||
+    [student?.thriller_preference, student?.romance_preference, student?.emotional_preference, student?.action_preference]
+      .filter(Boolean).join(" · ");
+
 
   return `
     <div class="auto-student">
@@ -108,7 +112,7 @@ function renderStudent(student) {
       </div>
 
       <div class="auto-student-movie">
-        ${escapeHtml(student?.favourite_movie)}
+        ${escapeHtml(movieText)}
       </div>
 
       ${
@@ -139,13 +143,22 @@ function renderPair(pair, index) {
       pair.female
     );
 
+  const scorePct = typeof pair.percentage === "number"
+    ? pair.percentage
+    : Math.round(((pair.score || 0) / 4) * 100);
+
 
   return `
     <article class="auto-pair-card">
 
-      <div class="auto-pair-number">
-        PAIR
-        ${String(index + 1).padStart(2, "0")}
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div class="auto-pair-number">
+          PAIR
+          ${String(index + 1).padStart(2, "0")}
+        </div>
+        <div style="font-family:var(--p-font-sans, sans-serif);font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--gold, #bd913b);background:rgba(189,145,59,0.12);padding:4px 10px;border-radius:999px;border:1px solid rgba(189,145,59,0.25);">
+          ${scorePct}% CINEMATIC COMPATIBILITY
+        </div>
       </div>
 
       <div class="auto-pair">
@@ -190,7 +203,7 @@ function renderPair(pair, index) {
       <div class="auto-basis">
 
         <div class="auto-basis-title">
-          MATCHING BASIS
+          MATCHING BASIS (${pair.reasons?.length || 0} / 4 Preferences Matched)
         </div>
 
         <div class="auto-basis-items">
@@ -348,6 +361,10 @@ async function generateAutomaticMatchesForUI() {
           semester,
           instagram_id,
           favourite_movie,
+          thriller_preference,
+          romance_preference,
+          emotional_preference,
+          action_preference,
           gender,
           match_intent,
           status,

@@ -650,18 +650,74 @@ function showRecoveryForm(form) {
       </div>
 
 
-      <div class="recovery-field">
+      <div class="recovery-field" style="margin-top:12px;">
 
-        <label for="recovery-movie">
-          FAVOURITE MOVIE
+        <label for="recovery-thriller">
+          THRILLER PREFERENCE
         </label>
 
-        <input
-          type="text"
-          id="recovery-movie"
-          placeholder="e.g. Bangalore Days"
-          autocomplete="off"
+        <select
+          id="recovery-thriller"
+          style="width:100%;padding:12px;border-radius:6px;border:1px solid #d9c9a8;background:var(--paper-light);color:var(--ink);margin-top:4px;font-family:var(--sans);font-size:13px;"
         >
+          <option value="">Select Thriller Movie</option>
+          <option value="Anjaam Pathiraa">Anjaam Pathiraa</option>
+          <option value="Memories">Memories</option>
+        </select>
+
+      </div>
+
+
+      <div class="recovery-field" style="margin-top:12px;">
+
+        <label for="recovery-romance">
+          ROMANTIC PREFERENCE
+        </label>
+
+        <select
+          id="recovery-romance"
+          style="width:100%;padding:12px;border-radius:6px;border:1px solid #d9c9a8;background:var(--paper-light);color:var(--ink);margin-top:4px;font-family:var(--sans);font-size:13px;"
+        >
+          <option value="">Select Romantic Movie</option>
+          <option value="Thattathin Marayathu">Thattathin Marayathu</option>
+          <option value="Ohm Shanthi Oshaana">Ohm Shanthi Oshaana</option>
+        </select>
+
+      </div>
+
+
+      <div class="recovery-field" style="margin-top:12px;">
+
+        <label for="recovery-emotional">
+          EMOTIONAL PREFERENCE
+        </label>
+
+        <select
+          id="recovery-emotional"
+          style="width:100%;padding:12px;border-radius:6px;border:1px solid #d9c9a8;background:var(--paper-light);color:var(--ink);margin-top:4px;font-family:var(--sans);font-size:13px;"
+        >
+          <option value="">Select Emotional Movie</option>
+          <option value="Akashadoothu">Akashadoothu</option>
+          <option value="Thanmathra">Thanmathra</option>
+        </select>
+
+      </div>
+
+
+      <div class="recovery-field" style="margin-top:12px;">
+
+        <label for="recovery-action">
+          ACTION PREFERENCE
+        </label>
+
+        <select
+          id="recovery-action"
+          style="width:100%;padding:12px;border-radius:6px;border:1px solid #d9c9a8;background:var(--paper-light);color:var(--ink);margin-top:4px;font-family:var(--sans);font-size:13px;"
+        >
+          <option value="">Select Action Movie</option>
+          <option value="Dhruvam">Dhruvam</option>
+          <option value="Narasimham">Narasimham</option>
+        </select>
 
       </div>
 
@@ -781,9 +837,24 @@ async function recoverStudentAccessCode() {
     );
 
 
-  const movieEl =
+  const thrillerEl =
     document.getElementById(
-      "recovery-movie"
+      "recovery-thriller"
+    );
+
+  const romanceEl =
+    document.getElementById(
+      "recovery-romance"
+    );
+
+  const emotionalEl =
+    document.getElementById(
+      "recovery-emotional"
+    );
+
+  const actionEl =
+    document.getElementById(
+      "recovery-action"
     );
 
 
@@ -813,11 +884,24 @@ async function recoverStudentAccessCode() {
       : "";
 
 
-  const movie =
-    movieEl
-      ? normalizeMovie(
-          movieEl.value
-        )
+  const thriller =
+    thrillerEl
+      ? thrillerEl.value.trim()
+      : "";
+
+  const romance =
+    romanceEl
+      ? romanceEl.value.trim()
+      : "";
+
+  const emotional =
+    emotionalEl
+      ? emotionalEl.value.trim()
+      : "";
+
+  const action =
+    actionEl
+      ? actionEl.value.trim()
       : "";
 
 
@@ -863,13 +947,13 @@ async function recoverStudentAccessCode() {
 
 
   /* -------------------------------------------------------
-     Validate movie
+     Validate movie preferences
      ------------------------------------------------------- */
 
-  if (!movie) {
+  if (!thriller || !romance || !emotional || !action) {
 
     showRecoveryError(
-      "Please enter your Favourite Movie."
+      "Please select one movie from each of the four preference categories."
     );
 
     return;
@@ -921,15 +1005,24 @@ async function recoverStudentAccessCode() {
        Call Supabase recovery RPC.
        ----------------------------------------------------- */
 
-    const { data, error } =
+    let { data, error } =
       await window.supabaseClient.rpc(
         "recover_student_access_code",
         {
           p_instagram_id:
             instagram,
 
-          p_favourite_movie:
-            movie
+          p_thriller_preference:
+            thriller,
+
+          p_romance_preference:
+            romance,
+
+          p_emotional_preference:
+            emotional,
+
+          p_action_preference:
+            action
         }
       );
 
@@ -941,7 +1034,7 @@ async function recoverStudentAccessCode() {
     if (error) {
 
       console.error(
-        "Access code recovery failed:",
+        "Recovery RPC error:",
         error
       );
 
@@ -974,7 +1067,7 @@ async function recoverStudentAccessCode() {
     ) {
 
       showRecoveryError(
-        "No registration was found matching that Instagram ID and Favourite Movie."
+        "No registration was found matching those details."
       );
 
       return;
@@ -1090,22 +1183,12 @@ async function recoverStudentAccessCode() {
        Hide recovery input controls
        ----------------------------------------------------- */
 
-    if (instagramEl) {
+    const recoveryFields =
+      document.querySelectorAll(".recovery-field");
 
-      instagramEl
-        .closest(".recovery-field")
-        ?.classList.add("hidden");
-
-    }
-
-
-    if (movieEl) {
-
-      movieEl
-        .closest(".recovery-field")
-        ?.classList.add("hidden");
-
-    }
+    recoveryFields.forEach(field =>
+      field.classList.add("hidden")
+    );
 
 
     if (recoverBtn) {

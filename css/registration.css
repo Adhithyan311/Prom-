@@ -47,3 +47,152 @@
 .field.invalid .genre-chip,.field.invalid .intent-chip{border-color:#9c3b3b;}
 
 .notice{background:#efe0e4;border:1px solid #d9b6bf;border-radius:6px;padding:14px 16px;display:flex;gap:10px;margin-top:26px;font-size:12.5px;color:#5c2c37;line-height:1.5;}
+
+/* =================== MOVIE PREFERENCES (3-CATEGORY VIBES) =================== */
+.vibe-section-header {
+  margin-bottom: 16px;
+}
+
+.vibe-heading {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 6px 0 6px;
+  line-height: 1.25;
+}
+
+.vibe-subtext {
+  font-size: 13px;
+  color: #7a6a54;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.vibe-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.vibe-category-block {
+  background: var(--paper-light);
+  border: 1px solid #d9c9a8;
+  border-radius: 8px;
+  padding: 16px 18px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vibe-category-block.invalid {
+  border-color: #9c3b3b;
+  background: #fdf6f6;
+}
+
+.vibe-category-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.vibe-num {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: #a89270;
+  line-height: 1;
+}
+
+.vibe-cat-title {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: block;
+}
+
+.vibe-cat-hint {
+  font-size: 11px;
+  color: #7a6a54;
+  display: block;
+  margin-top: 2px;
+}
+
+.vibe-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.vibe-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1.5px solid #d9c9a8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  user-select: none;
+  width: 100%;
+  outline: none;
+  gap: 8px;
+}
+
+.vibe-chip:hover {
+  border-color: var(--gold-dim);
+  background: #faf6ed;
+}
+
+.vibe-chip:focus-visible {
+  box-shadow: 0 0 0 3px rgba(217, 169, 76, 0.3);
+}
+
+.vibe-chip-title {
+  font-family: var(--serif);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.vibe-chip-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #eae2d0;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.vibe-chip.selected {
+  background: #ebdcb9;
+  border-color: #6b1d2f;
+  box-shadow: 0 2px 8px rgba(107, 29, 47, 0.12);
+}
+
+.vibe-chip.selected .vibe-chip-title {
+  color: #541523;
+  font-weight: 700;
+}
+
+.vibe-chip.selected .vibe-chip-check {
+  background: #6b1d2f;
+  color: #ffffff;
+}
+
+.field.invalid .vibe-category-block {
+  border-color: #9c3b3b;
+}
+

@@ -7,195 +7,419 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css?v=mobile-fix">
+<link rel="stylesheet" href="css/student-redesign.css">
 </head>
 <body>
 
-<div class="strip">
-  <span>35MM KODAK 5247 · PELÍCULA PROM NIGHT</span>
-  <span class="sprockets">
-    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-  </span>
-  <span>LATENT IMAGE · SAFETY FILM &nbsp;&nbsp;FRAME 24.0 FPS</span>
-</div>
-
-<nav class="nav">
-  <div class="brand">
-    <div class="glyph" title="Película">
-      <img src="assets/pelicula-logo.jpg" alt="Película Logo">
-    </div>
-    <div>
-      <div class="word">Película</div>
-      <div class="sub">PROM NIGHT</div>
-    </div>
+<nav class="nav editorial-nav">
+  <div class="brand" style="cursor:pointer;">
+    <img src="assets/pelicula-logo.png" alt="Película Logo" class="brand-logo-img">
+    <div class="word" style="font-family:var(--p-font-serif);font-size:22px;font-weight:600;letter-spacing:0.14em;color:var(--p-charcoal);">PELICULA</div>
   </div>
+  <button type="button" class="nav-toggle-btn" id="navToggleBtn" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <div class="nav-links" id="navLinks">
-    <a href="#/experience" data-route="experience">Experience</a>
+    <a href="#/experience" data-route="experience">Home</a>
+    <a href="#how-it-works-section" data-route="how-it-works" id="navLinkHowItWorks">How It Works</a>
     <a href="#/register" data-route="register">Register</a>
-    <a href="#/status" data-route="status" id="navLinkStatus">Status &amp; Reveal</a>
-  </div>
-  <div class="nav-right">
-    <div class="chip">📅 25 September 2026 · Prom Night</div>
-    <div class="session-badge hidden" id="sessionBadge"></div>
-    <div class="avatar" id="userAvatar" title="Session Status">👤</div>
+    <a href="#/status" data-route="status" id="navLinkStatus">My Match</a>
   </div>
 </nav>
 
 <!-- ===================== EXPERIENCE ===================== -->
 <div class="view" id="view-experience">
-  <div class="filmstrip">
-    <div class="frame">
-      <img src="assets/posters/thattathin-marayathu.jpg" alt="Thattathin Marayathu movie poster">
-      <span class="frame-label">Act I · 03:12</span>
-    </div>
-    <div class="frame">
-      <img src="assets/posters/titanic.jpg" alt="Titanic movie poster">
-      <span class="frame-label">Act I · 16:05</span>
-    </div>
-    <div class="frame">
-      <img src="assets/posters/your-name.jpg" alt="Your Name movie poster">
-      <span class="frame-label">Scene 4 · 07:31</span>
-    </div>
-    <div class="frame">
-      <img src="assets/posters/kandukondain-kandukondain.jpg" alt="Kandukondain Kandukondain movie poster">
-      <span class="frame-label">Act IV · 22:50</span>
-    </div>
-    <div class="frame">
-      <img src="assets/posters/yeh-jawaani-hai-deewani.jpg" alt="Yeh Jawaani Hai Deewani movie poster">
-      <span class="frame-label">Finale · 03:29</span>
-    </div>
-  </div>
-
-  <div class="hero-grid">
-    <div>
-      <div class="eyebrow">The Curated Matchmaking Salon</div>
-      <h1 class="h1">Welcome to the Prom Night</h1>
-      <p class="lede" style="font-family:var(--serif);font-style:italic;color:var(--cream-text);font-size:16px;">"Every love story deserves its own reel in the same scene."</p>
-      <p class="lede">Every person has a story. Every story has a scene. Give us yours, and we'll see who belongs in the next one.</p>
-      <div class="hero-buttons">
-        <a href="#/register" class="btn btn-gold">🎟 Claim Your Prom Pass</a>
+  <!-- SECTION 1: HERO SPLIT CONTAINER -->
+  <div class="split-container hero-split-container">
+    <!-- LEFT HERO PANEL (CREAM PAPER) -->
+    <div class="hero-left-panel">
+      <div class="hero-top-tag">SAME<br>PEOPLE<br>NEW<br>STORIES</div>
+      <div class="hero-main-title">
+        <h1>PROM<br>NIGHT</h1>
+        <div class="hero-year-badge">'26</div>
       </div>
+      <p class="hero-subtitle">One night.<br>A thousand memories.</p>
+      <div class="hero-action-row">
+        <a href="#/register" class="hero-find-match-btn">
+          <span class="circle-arrow">→</span>
+          <span>Find Your Prom Match</span>
+        </a>
+      </div>
+      <div class="hero-bottom-tag">A MATCHMAKING EXPERIENCE BY PELÍCULA</div>
+      <div class="hero-scroll-indicator">Scroll |</div>
     </div>
-    <div class="letter-card">
-      <div class="seal">✦</div>
-      <h3>“To me, you are perfect.”</h3>
-      <div class="sign">— Love Actually (2003)</div>
-      <p>Some stories are written in a script.<br>Some begin with a glance.<br>Tonight, two stories meet.</p>
-      <div class="hairline"></div>
-      <div class="sign">PELÍCULA · PROM NIGHT<br>25 SEPTEMBER 2026<br>7:30 PM — 9:30 PM</div>
-    </div>
-  </div>
 
-  <div class="stats-row" id="prom-countdown-container">
-    <div class="stat"><div class="num" id="cd-days">00</div><div class="lbl">DAYS</div></div>
-    <div class="stat"><div class="num" id="cd-hours">00</div><div class="lbl">HOURS</div></div>
-    <div class="stat"><div class="num" id="cd-mins">00</div><div class="lbl">MINUTES</div></div>
-    <div class="stat"><div class="num" id="cd-secs">00</div><div class="lbl">SECONDS</div></div>
-  </div>
-
-  <div>
-    <div class="eyebrow">The Narrative Arc</div>
-    <h2 class="h1" style="font-size:30px;">How Your Reel Unfolds</h2>
-    <div class="steps-grid">
-      <div class="step-card"><div class="num-circ">01</div><h4>The Script</h4><p>Create your cinematic profile. Enter your name, department, semester, Instagram handle, favorite movie, gender, and match intent.</p><div class="sign">REGISTRATION · CINEMA · MATCHING</div></div>
-      <div class="step-card"><div class="num-circ">02</div><h4>The Projectionist</h4><p>Once the reels are collected, the Director carefully pairs registered cineastes for their Prom Night match.</p><div class="sign">CURATED MATCHMAKING · PRIVATE SELECTION</div></div>
-      <div class="step-card"><div class="num-circ">03</div><h4>Prom Night</h4><p>On 25 September 2026, your sealed pairing is revealed. Arrive dressed for your chosen romantic theme, meet your match, and step into the evening where cinema becomes your story.</p><div class="sign">25 SEPTEMBER 2026<br>7:30 PM — 9:30 PM<br>PROM NIGHT · FINAL REVEAL</div></div>
+    <!-- RIGHT HERO PANEL (BURGUNDY) -->
+    <div class="hero-right-panel">
+      <div class="hero-right-script script-text">
+        Maybe<br>this is where<br>the story begins.
+      </div>
+      <div class="hero-watermark-year">'26</div>
+      <img src="assets/ref/ref-back.png" alt="Couple back to back artwork" class="hero-art-img">
     </div>
   </div>
 
-  <div class="quote-band">"I like to feel his eyes on me when I look away. That is what cinema is."
-    <span>— Richard Linklater, Before Sunrise (1995)</span>
+  <!-- MOBILE-ONLY SECTION DIVIDER -->
+  <div class="mobile-section-divider">
+    <span class="mobile-divider-line"></span>
+    <span class="mobile-divider-label">The Story Continues</span>
+    <span class="mobile-divider-line"></span>
   </div>
 
-  <div class="cta-band">
-    <h3>Are you ready to discover who shares your favorite movie?</h3>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
-      <a href="#/register" class="btn btn-gold">Claim Your Prom Pass</a>
-      <a href="#/status" class="btn btn-outline">Check Prom Status</a>
+  <!-- SECTION 2: HOW IT WORKS (DARK OLIVE GREEN) -->
+  <div id="how-it-works-section" class="how-it-works-olive-container">
+    <div class="how-it-works-content">
+      <div class="olive-eyebrow">HOW IT WORKS</div>
+      <h2 class="olive-title">A few steps to a<br>memorable night.</h2>
+
+      <div class="olive-steps-list">
+        <div class="olive-step-item">
+          <span class="olive-step-num">01</span>
+          <div class="olive-step-body">
+            <h3>Tell us about yourself</h3>
+            <p>Create your Prom profile.</p>
+          </div>
+        </div>
+        <div class="olive-step-item">
+          <span class="olive-step-num">02</span>
+          <div class="olive-step-body">
+            <h3>Choose your vibe</h3>
+            <p>Pick your preferences.</p>
+          </div>
+        </div>
+        <div class="olive-step-item">
+          <span class="olive-step-num">03</span>
+          <div class="olive-step-body">
+            <h3>Let the matching happen</h3>
+            <p>We'll take care of the rest.</p>
+          </div>
+        </div>
+        <div class="olive-step-item">
+          <span class="olive-step-num">04</span>
+          <div class="olive-step-body">
+            <h3>Discover your match</h3>
+            <p>Return when the matches are ready.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="olive-decor-polaroid">
+        <div class="olive-script-overlay script-text">Different<br>minds<br>Same kind<br>of magic</div>
+        <div class="polaroid-frame-box">
+          <img src="assets/ref/ref-dance.png" alt="Couple dancing artwork">
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
 <!-- ===================== REGISTER ===================== -->
 <div class="view hidden" id="view-register">
-  <div class="stepper">
-    <div class="step-dot active" id="stepDot1">01</div>
-    <div class="step-line"></div>
-    <div class="step-dot" id="stepDot2">02</div>
-    <div class="step-line"></div>
-    <div class="step-dot" id="stepDot3">03</div>
+  <!-- STEP NAVIGATION BAR -->
+  <div class="step-nav-bar">
+    <button type="button" class="step-back-link" id="regGlobalBackBtn">
+      ← Back
+    </button>
+    <div class="step-dots-container">
+      <div class="step-item active" id="stepIndicator1">
+        <div class="step-circle">01</div>
+        <span class="step-label">About You</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-item" id="stepIndicator2">
+        <div class="step-circle">02</div>
+        <span class="step-label">Your Vibe</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-item" id="stepIndicator3">
+        <div class="step-circle">03</div>
+        <span class="step-label">Confirm</span>
+      </div>
+    </div>
   </div>
 
-  <div class="paper-card reg-card">
-    <div class="sprocket-top"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="reg-head">
-      <div>
-        <div class="eyebrow">Película · Prom Night Edition</div>
-        <h2>Audition Voucher</h2>
-      </div>
-      <div class="dossier">Dossier No.<b id="regDossierNo">#PLF-2024-C74</b></div>
+  <!-- SPLIT CONTAINER -->
+  <div class="split-container" id="regFormContainer">
+    <!-- LEFT PANEL: REGISTRATION FORM STEPS -->
+    <div class="split-form-panel">
+      <form id="regForm" novalidate>
+
+        <!-- STEP 01: ABOUT YOU -->
+        <div id="reg-step-1" class="reg-step-content">
+          <h2 class="editorial-title">Tell us a little<br>about you.</h2>
+          <p class="editorial-subtitle">A few details. One unexpected connection.</p>
+
+          <div class="form-group-grid">
+            <div class="input-field-group" id="f-name">
+              <label for="in-name">Full Name</label>
+              <input type="text" id="in-name" class="editorial-input" placeholder="Enter your name">
+              <div class="field-err">Please enter your name.</div>
+            </div>
+
+            <div class="input-field-group" id="f-dept">
+              <label for="in-branch">Department</label>
+              <input type="text" id="in-branch" class="editorial-input" placeholder="e.g. Computer Science">
+              <div class="field-err">Please enter your department.</div>
+            </div>
+
+            <div class="input-field-group" id="f-semester">
+              <label for="in-semester">Year / Semester</label>
+              <input type="text" id="in-semester" class="editorial-input" placeholder="e.g. 3rd Year / S7">
+              <div class="field-err">Please enter your year or semester.</div>
+            </div>
+
+            <div class="input-field-group" id="f-handle">
+              <label for="in-instagram">Instagram ID</label>
+              <div class="instagram-input-wrapper">
+                <span class="at-symbol">@</span>
+                <input type="text" id="in-instagram" class="editorial-input" placeholder="username">
+              </div>
+              <div class="field-err">Please enter your Instagram handle.</div>
+            </div>
+
+            <div class="input-field-group" id="f-gender">
+              <label for="in-gender">Gender</label>
+              <select id="in-gender" class="editorial-select">
+                <option value="">Select gender</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="field-err">Please select your gender.</div>
+            </div>
+
+            <div class="input-field-group" id="f-intent">
+              <label>Match Intent</label>
+              <div class="intent-row">
+                <button type="button" class="intent-chip" data-intent="romance"><b>🎬 Romance</b><span>A Love Story</span></button>
+                <button type="button" class="intent-chip" data-intent="friendship"><b>🤝 Friendship</b><span>A Buddy Picture</span></button>
+                <button type="button" class="intent-chip" data-intent="either"><b>✨ Open to Either</b><span>Undecided Genre</span></button>
+              </div>
+              <div class="field-err">Please select your match intent.</div>
+            </div>
+
+            <div style="margin-top: 12px;">
+              <button type="button" id="btnStep1Next" class="btn-burgundy" style="width:100%;">
+                Next: Choose Your Vibe →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 02: YOUR VIBE (CHOOSE YOUR CINEMATIC VIBE) -->
+        <div id="reg-step-2" class="reg-step-content hidden">
+          <h2 class="editorial-title">Choose Your Vibe.</h2>
+          <p class="editorial-subtitle">Choose one film from each category.</p>
+
+          <div class="vibe-categories-stack" id="f-movie">
+            <!-- 01 THRILLER -->
+            <div class="vibe-category-row" id="vibe-cat-thriller">
+              <div class="vibe-cat-title-line">
+                <span class="vibe-cat-number">01</span>
+                <span class="vibe-cat-name">THRILLER</span>
+              </div>
+              <div class="vibe-cat-question">What kind of thriller do you prefer?</div>
+              <div class="vibe-options-grid">
+                <label class="editorial-select-card vibe-chip" data-category="thriller" data-value="Anjaam Pathiraa">
+                  <input type="radio" name="thriller_opt" value="Anjaam Pathiraa">
+                  <span class="card-movie-title">Anjaam Pathiraa</span>
+                  <span class="card-check-icon">✓</span>
+                </label>
+                <label class="editorial-select-card vibe-chip" data-category="thriller" data-value="Memories">
+                  <input type="radio" name="thriller_opt" value="Memories">
+                  <span class="card-movie-title">Memories</span>
+                  <span class="card-check-icon">✓</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 02 ROMANCE -->
+            <div class="vibe-category-row" id="vibe-cat-romantic">
+              <div class="vibe-cat-title-line">
+                <span class="vibe-cat-number">02</span>
+                <span class="vibe-cat-name">ROMANCE</span>
+              </div>
+              <div class="vibe-cat-question">What kind of romance do you prefer?</div>
+              <div class="vibe-options-grid">
+                <label class="editorial-select-card vibe-chip" data-category="romantic" data-value="Thattathin Marayathu">
+                  <input type="radio" name="romantic_opt" value="Thattathin Marayathu">
+                  <span class="card-movie-title">Thattathin Marayathu</span>
+                  <span class="card-check-icon">✓</span>
+                </label>
+                <label class="editorial-select-card vibe-chip" data-category="romantic" data-value="Ohm Shanthi Oshaana">
+                  <input type="radio" name="romantic_opt" value="Ohm Shanthi Oshaana">
+                  <span class="card-movie-title">Ohm Shanthi Oshaana</span>
+                  <span class="card-check-icon">✓</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 03 EMOTIONAL -->
+            <div class="vibe-category-row" id="vibe-cat-emotional">
+              <div class="vibe-cat-title-line">
+                <span class="vibe-cat-number">03</span>
+                <span class="vibe-cat-name">EMOTIONAL</span>
+              </div>
+              <div class="vibe-cat-question">What kind of emotional story do you prefer?</div>
+              <div class="vibe-options-grid">
+                <label class="editorial-select-card vibe-chip" data-category="emotional" data-value="Akashadoothu">
+                  <input type="radio" name="emotional_opt" value="Akashadoothu">
+                  <span class="card-movie-title">Akashadoothu</span>
+                  <span class="card-check-icon">✓</span>
+                </label>
+                <label class="editorial-select-card vibe-chip" data-category="emotional" data-value="Thanmathra">
+                  <input type="radio" name="emotional_opt" value="Thanmathra">
+                  <span class="card-movie-title">Thanmathra</span>
+                  <span class="card-check-icon">✓</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 04 ACTION -->
+            <div class="vibe-category-row" id="vibe-cat-action">
+              <div class="vibe-cat-title-line">
+                <span class="vibe-cat-number">04</span>
+                <span class="vibe-cat-name">ACTION</span>
+              </div>
+              <div class="vibe-cat-question">What kind of action film do you prefer?</div>
+              <div class="vibe-options-grid">
+                <label class="editorial-select-card vibe-chip" data-category="action" data-value="Dhruvam">
+                  <input type="radio" name="action_opt" value="Dhruvam">
+                  <span class="card-movie-title">Dhruvam</span>
+                  <span class="card-check-icon">✓</span>
+                </label>
+                <label class="editorial-select-card vibe-chip" data-category="action" data-value="Narasimham">
+                  <input type="radio" name="action_opt" value="Narasimham">
+                  <span class="card-movie-title">Narasimham</span>
+                  <span class="card-check-icon">✓</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-err" id="step2Err" style="margin-bottom:16px;">Please choose one film from each category.</div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;max-width:580px;">
+            <button type="button" id="btnStep2Back" class="btn-outline-editorial">
+              ← Edit Profile
+            </button>
+            <button type="button" id="btnStep2Next" class="btn-burgundy">
+              Next: Confirm →
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 03: CONFIRM -->
+        <div id="reg-step-3" class="reg-step-content hidden">
+          <h2 class="editorial-title">Almost there.</h2>
+          <p class="editorial-subtitle">Take a final look before you join.</p>
+
+          <div class="confirm-dossier-card">
+            <table class="dossier-table">
+              <tr>
+                <td class="label-col">Name</td>
+                <td class="value-col" id="confirmName">—</td>
+              </tr>
+              <tr>
+                <td class="label-col">Department</td>
+                <td class="value-col" id="confirmDept">—</td>
+              </tr>
+              <tr>
+                <td class="label-col">Year / Sem</td>
+                <td class="value-col" id="confirmSem">—</td>
+              </tr>
+              <tr>
+                <td class="label-col">Instagram</td>
+                <td class="value-col" id="confirmInsta">—</td>
+              </tr>
+              <tr>
+                <td class="label-col">Gender</td>
+                <td class="value-col" id="confirmGender">—</td>
+              </tr>
+              <tr>
+                <td class="label-col">Match Intent</td>
+                <td class="value-col" id="confirmIntent">—</td>
+              </tr>
+            </table>
+
+            <div class="dossier-section-heading">Movie Preferences</div>
+            <div class="vibe-summary-list">
+              <div class="vibe-summary-item">
+                <span class="cat-lbl">Thriller</span>
+                <b class="movie-name" id="confirmThriller">—</b>
+              </div>
+              <div class="vibe-summary-item">
+                <span class="cat-lbl">Romance</span>
+                <b class="movie-name" id="confirmRomance">—</b>
+              </div>
+              <div class="vibe-summary-item">
+                <span class="cat-lbl">Emotional</span>
+                <b class="movie-name" id="confirmEmotional">—</b>
+              </div>
+              <div class="vibe-summary-item">
+                <span class="cat-lbl">Action</span>
+                <b class="movie-name" id="confirmAction">—</b>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;max-width:540px;">
+            <button type="button" id="btnStep3Back" class="btn-outline-editorial">
+              ← Edit
+            </button>
+            <button type="submit" id="btnSealSubmit" class="btn-burgundy">
+              Complete Registration →
+            </button>
+          </div>
+          <div style="text-align:center;margin-top:14px;font-size:12.5px;color:#7a6a54;font-weight:600;" id="regSuccess"></div>
+        </div>
+      </form>
     </div>
-    <div class="hairline"></div>
 
-    <form id="regForm" novalidate>
-      <div class="field" id="f-name">
-        <label>1. Name</label>
-        <input type="text" id="in-name" placeholder="e.g. Marion Cotillard-Beauvois">
-        <div class="field-err">Please give us your starring name.</div>
-      </div>
-
-      <div class="field" id="f-dept">
-        <label>2. Department</label>
-        <input type="text" id="in-branch" placeholder="e.g. CSE">
-        <div class="field-err">Please enter your department.</div>
-      </div>
-
-      <div class="field" id="f-semester">
-        <label>3. Semester</label>
-        <input type="text" id="in-semester" placeholder="e.g. S7">
-        <div class="field-err">Please enter your semester.</div>
-      </div>
-
-      <div class="field" id="f-handle">
-        <label>4. Instagram ID</label>
-        <div class="handle-row">
-          <div class="at">@</div>
-          <input type="text" id="in-instagram" placeholder="username">
+    <!-- RIGHT PANEL: EDITORIAL MEDIA & DECORATION -->
+    <div class="split-media-panel">
+      <img src="assets/ref/ref-stairs.png" alt="Editorial scene" class="panel-art-img">
+      <div class="split-media-overlay">
+        <div class="media-panel-header script-text" id="mediaScriptHeading">
+          Good people<br>Better stories.
         </div>
-        <div class="field-err">Please give us your Instagram handle.</div>
-      </div>
-
-      <div class="field" id="f-movie">
-        <label>5. Favourite Movie</label>
-        <input type="text" id="in-movie" placeholder="e.g. Thattathin Marayathu, Titanic, Your Name...">
-        <div class="field-err">Please enter your favourite movie.</div>
-      </div>
-
-      <div class="field" id="f-gender">
-        <label>6. Gender</label>
-        <select id="in-gender">
-          <option value="">Select Gender</option>
-          <option value="Female">Female</option>
-          <option value="Male">Male</option>
-          <option value="Other">Other</option>
-        </select>
-        <div class="field-err">Please select your gender.</div>
-      </div>
-
-      <div class="field" id="f-intent">
-        <label>7. Match Intent</label>
-        <div class="intent-row">
-          <button type="button" class="intent-chip" data-intent="romance"><b>🎬 Romance</b><span>A Love Story</span></button>
-          <button type="button" class="intent-chip" data-intent="friendship"><b>🤝 Friendship</b><span>A Buddy Picture</span></button>
-          <button type="button" class="intent-chip" data-intent="either"><b>✨ Open to Either</b><span>Undecided Genre</span></button>
+        <div class="media-panel-footer">
+          <div class="polaroid-badge">
+            <img src="assets/ref/ref-dance.png" alt="Prom Night couple dancing">
+            <p>Película '26</p>
+          </div>
         </div>
-        <div class="field-err">Please choose your match intent.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 04: YOU'RE IN / SUCCESS SCREEN (DARK OLIVE GREEN) -->
+  <div id="reg-step-4" class="success-olive-container hidden">
+    <div class="success-content-box">
+      <div class="success-header-script">Thank you for being a part of this.</div>
+      <h1 class="success-title">You're in.</h1>
+      <p style="font-family:var(--p-font-serif);font-size:22px;color:#D3E2D1;margin:-10px 0 16px 0;font-style:italic;">Now let the night do the rest.</p>
+      <p class="success-subtext">Your Prom registration has been successfully completed. We'll let you know when the matches are ready.</p>
+
+      <div class="access-code-card">
+        <div class="access-code-lbl">YOUR PRIVATE ACCESS CODE</div>
+        <div class="access-code-val" id="successAccessCode">SC-XXXX</div>
+        <button type="button" class="access-code-copy-btn" id="btnCopySuccessCode">
+          📋 COPY ACCESS CODE
+        </button>
       </div>
 
-      <div class="notice">🔒 <div><b>Confidential Dossier</b> — Your Instagram handle and full identity remain sealed and hidden until mutual premiere reveal.</div></div>
+      <div class="success-actions">
+        <a href="#/status" class="btn-burgundy" style="background:#5B1C24;">View My Profile →</a>
+        <a href="#/experience" class="btn-outline-editorial" style="color:#FFF;border-color:rgba(255,255,255,0.3);">Back to Home</a>
+      </div>
 
-      <button type="submit" id="btnSealSubmit" class="btn btn-gold btn-full" style="margin-top:26px;">Seal &amp; Submit Registration →</button>
-      <div style="text-align:center;margin-top:14px;font-size:12.5px;color:#7a6a54;font-weight:600;" id="regSuccess"></div>
-    </form>
+      <div class="success-polaroid">
+        <img src="assets/ref/ref-guitar.png" alt="Couple with guitar under string lights">
+        <p>Same people. New stories.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -203,198 +427,218 @@
 <div class="view hidden" id="view-status">
   <!-- DYNAMIC VIEW CONTAINER -->
   <div id="status-container">
-    <!-- Unmatched candidate status view -->
+
+    <!-- 1. UNMATCHED / WAITING CANDIDATE STATUS VIEW -->
     <div id="status-unmatched" class="hidden">
-      <div class="reveal-head">
-        <div class="eyebrow">Official Selection · Dossier Status</div>
-        <h1 class="h1" style="font-style:italic;">Prom Dossier Under Review</h1>
-        <p class="lede" style="margin:0 auto;">Your Prom Night dossier has been sealed and placed in the Projectionist's vault. Our committee is calibrating mutual movie &amp; music grammar for your premiere.</p>
-      </div>
+      <div class="status-editorial-wrapper">
+        <div class="status-header-center">
+          <div class="editorial-eyebrow">STUDENT DOSSIER · IN REVIEW</div>
+          <h1 class="editorial-title" style="text-align:center;">Prom Profile Under Review</h1>
+          <p class="editorial-subtitle" style="text-align:center;max-width:540px;margin:8px auto 0 auto;">Your Prom Night profile has been safely recorded. We are calibrating your movie vibe preferences for your premiere.</p>
+        </div>
 
-      <div class="paper-card reg-card" style="margin-top:32px;">
-        <div class="sprocket-top"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="reg-head">
-          <div>
-            <div class="eyebrow">Status: IN REVIEW</div>
-            <h2 id="um-cand-name">Candidate Name</h2>
-            <div style="font-size:13px;color:#7a6a54;margin-top:4px;" id="um-cand-dept">Department</div>
+        <div class="editorial-paper-card" style="margin-top:32px;">
+          <div class="paper-card-header">
+            <div>
+              <div class="card-status-badge">STATUS: WAITING FOR MATCH</div>
+              <h2 class="card-student-name" id="um-cand-name">Candidate Name</h2>
+              <div class="card-student-dept" id="um-cand-dept">Department</div>
+            </div>
+            <div class="dossier-id-box">
+              <span class="dossier-lbl">ACCESS CODE</span>
+              <b id="um-cand-id">#SC-0000</b>
+            </div>
           </div>
-          <div class="dossier">Dossier ID<b id="um-cand-id">#PL-000</b></div>
-        </div>
-        <div class="hairline"></div>
 
-        <div style="font-size:13.5px;color:var(--ink);line-height:1.6;">
-          <p><b>Semester:</b> <span id="um-cand-sem">S7</span></p>
-          <p><b>Instagram ID:</b> @<span id="um-cand-handle">username</span></p>
-          <p><b>Favourite Movie:</b> <span id="um-cand-movie">Movie Title</span></p>
-          <p><b>Gender:</b> <span id="um-cand-gender">Gender</span></p>
-          <p><b>Match Intent:</b> <span id="um-cand-intent">Romance</span></p>
-          <p style="margin-top:16px;font-size:12px;color:#7a6a54;">Registered on <span id="um-cand-date">Date</span></p>
-        </div>
+          <div class="card-divider-line"></div>
 
-        <div class="notice" style="margin-top:20px;">
-          ⏳ <div><b>Curatorial Screening</b> — Matching is performed in sequence by the Projectionist. Check back soon for your assigned Prom Night seat &amp; paired cineaste match.</div>
-        </div>
+          <div class="profile-details-grid">
+            <div class="detail-item">
+              <span class="detail-label">Semester / Year</span>
+              <span class="detail-value" id="um-cand-sem">S7</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Instagram ID</span>
+              <span class="detail-value" id="um-cand-handle">@username</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Gender</span>
+              <span class="detail-value" id="um-cand-gender">Gender</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Match Intent</span>
+              <span class="detail-value" id="um-cand-intent">Romance</span>
+            </div>
+          </div>
 
-        <div style="margin-top:20px;text-align:center;">
-          <button class="btn btn-outline" id="status-unmatched-logout-btn" style="color:var(--ink);border-color:#d9c9a8;">Log Out of Session</button>
+          <!-- Vibe Match Preferences -->
+          <div class="vibe-profile-block">
+            <div class="vibe-block-title">Vibe Preferences</div>
+            <div class="vibe-badges-grid">
+              <div class="vibe-badge-item">
+                <span class="vibe-badge-cat">THRILLER</span>
+                <b class="vibe-badge-val" id="um-cand-thriller">—</b>
+              </div>
+              <div class="vibe-badge-item">
+                <span class="vibe-badge-cat">ROMANCE</span>
+                <b class="vibe-badge-val" id="um-cand-romance">—</b>
+              </div>
+              <div class="vibe-badge-item">
+                <span class="vibe-badge-cat">EMOTIONAL</span>
+                <b class="vibe-badge-val" id="um-cand-emotional">—</b>
+              </div>
+              <div class="vibe-badge-item">
+                <span class="vibe-badge-cat">ACTION</span>
+                <b class="vibe-badge-val" id="um-cand-action">—</b>
+              </div>
+            </div>
+            <span id="um-cand-movie" class="hidden"></span>
+          </div>
+
+          <div class="status-notice-box">
+            <span>⏳</span>
+            <div><b>Curatorial Screening</b> — Matching is performed in sequence by the committee. Check back soon for your assigned Prom Night match.</div>
+          </div>
+
+          <div style="margin-top:24px;text-align:center;">
+            <button type="button" class="btn-outline-editorial" id="status-unmatched-logout-btn">Log Out of Session</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Matched candidate status reveal view -->
+    <!-- 2. MATCHED CANDIDATE STATUS REVEAL VIEW (TARGET REFERENCE STYLE) -->
     <div id="status-matched" class="hidden">
-      <div class="reveal-head">
-        <div class="eyebrow">Official Selection · Prom Night Reveal</div>
-        <h1 class="h1" style="font-style:italic;">Welcome to the Prom Night</h1>
-        <p class="lede" style="margin:0 auto;">Two reels, threaded across the same festival terrace. The curated night where stories, cinema, and two people meet in the same scene.</p>
-      </div>
-
-      <div class="reveal-grid">
-        <!-- CANDIDATE A CARD -->
-        <div class="reveal-photo" id="m-card-a">
-          <div class="card-header-label">
-            <div class="sub">PROM NIGHT LOOK</div>
-            <div class="title" id="m-theme-a">SET 01 - Midnight Black</div>
-          </div>
-          <div class="ph" id="m-ph-a">
-            <img src="assets/costumes/set1-boy.jpg" alt="Midnight Black - Boy Look" class="costume-img-single">
-          </div>
-          <div class="card-divider"></div>
-          <div class="reveal-info">
-            <div class="seat" id="m-seat-a">FIRST SEAT · BALCONY ROW C</div>
-            <h3 id="m-name-a">Candidate A</h3>
-            <div class="dept" id="m-dept-a">CSE S7</div>
-            <div class="card-info-row">
-              <div class="info-item">
-                <span class="icon">🎬</span>
-                <div class="info-body">
-                  <span class="lbl">Movie</span>
-                  <b id="m-movie-a">Thattathin Marayathu</b>
-                </div>
-              </div>
-              <div class="info-item">
-                <span class="icon">📷</span>
-                <div class="info-body">
-                  <span class="lbl">Instagram ID</span>
-                  <b id="m-insta-a">@username</b>
-                </div>
-              </div>
+      <!-- HERO SPLIT CONTAINER MATCHING TARGET REFERENCE PANEL 7 -->
+      <div class="split-container hero-split-container">
+        <!-- LEFT PANEL: YOUR PROM MATCH -->
+        <div class="hero-left-panel">
+          <div>
+            <div class="hero-top-tag">THE WAIT IS OVER</div>
+            <div class="hero-main-title">
+              <h1 style="font-size:52px;line-height:1.05;">YOUR PROM<br>MATCH</h1>
+            </div>
+            <p class="hero-subtitle" style="font-size:20px;margin-top:14px;">Looks like you've got a match.</p>
+            <div class="script-text-dark" style="margin:20px 0;font-size:28px;">
+              "Maybe this is where the story begins."
             </div>
           </div>
+
+          <div class="hero-action-row" style="margin-bottom:20px;">
+            <button type="button" class="btn-burgundy" id="btnScrollToMatchProfile" style="padding:16px 32px;font-size:15px;border:none;cursor:pointer;">
+              <span>View Match Profile</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <div>
+            <a href="#/experience" class="step-back-link" style="font-size:13px;">← Back to Home</a>
+          </div>
         </div>
 
-        <!-- CANDIDATE B CARD -->
-        <div class="reveal-photo" id="m-card-b">
-          <div class="card-header-label">
-            <div class="sub">PROM NIGHT LOOK</div>
-            <div class="title" id="m-theme-b">SET 01 - Midnight Black</div>
+        <!-- RIGHT PANEL: ROMANTIC ARTWORK MATCHING TARGET REFERENCE PANEL 7 -->
+        <div class="hero-right-panel" style="background-color:var(--p-burgundy);">
+          <div class="hero-right-script script-text" style="font-size:36px;color:#F3D3D3;max-width:320px;">
+            Different kinds of<br>Same feelings.
           </div>
-          <div class="ph" id="m-ph-b">
-            <img src="assets/costumes/set1-girl.jpg" alt="Midnight Black - Girl Look" class="costume-img-single">
-          </div>
-          <div class="card-divider"></div>
-          <div class="reveal-info">
-            <div class="seat" id="m-seat-b">SECOND SEAT · BALCONY ROW C</div>
-            <h3 id="m-name-b">Candidate B</h3>
-            <div class="dept" id="m-dept-b">ECE S5</div>
-            <div class="card-info-row">
-              <div class="info-item">
-                <span class="icon">🎬</span>
-                <div class="info-body">
-                  <span class="lbl">Movie</span>
-                  <b id="m-movie-b">Titanic</b>
+          <div class="hero-watermark-year">'26</div>
+          <img src="assets/ref/ref-dance.png" alt="Couple holding hands" class="hero-art-img" style="opacity:0.9;">
+        </div>
+      </div>
+
+      <!-- EDITORIAL PROFILE CARDS SECTION MATCHING TARGET REFERENCE PANEL 8 -->
+      <div id="m-profile-section" class="match-profile-editorial-section" style="padding:60px 20px;background:var(--p-cream-bg);">
+        <div class="match-profile-container" style="max-width:1100px;margin:0 auto;">
+
+          <div class="match-cards-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+            
+            <!-- YOUR PROFILE CARD -->
+            <div class="editorial-paper-card">
+              <div class="profile-card-top-tag">PELICULA PROM NIGHT '26</div>
+              <h2 class="profile-card-name" id="m-name-a">Candidate A</h2>
+              <div class="profile-card-sub" id="m-dept-a">CSE S7</div>
+              <p class="profile-card-bio" id="m-bio-a">Loves good movies, long conversations and everything in between.</p>
+              
+              <div class="card-divider-line"></div>
+              
+              <div class="profile-vibe-section">
+                <div class="vibe-section-title">Vibe Match</div>
+                <div class="vibe-pills-row" id="m-vibes-a">
+                  <span class="vibe-pill" id="m-movie-a">Movie Choice</span>
                 </div>
               </div>
-              <div class="info-item">
-                <span class="icon">📷</span>
-                <div class="info-body">
-                  <span class="lbl">Instagram ID</span>
-                  <b id="m-insta-b">@username</b>
-                </div>
+
+              <div class="profile-insta-row" style="margin-top:20px;font-size:13px;color:var(--p-ink-muted);">
+                <span>Instagram: <b id="m-insta-a" style="color:var(--p-burgundy);">@username</b></span>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="heart-badge">
-          <div class="harmony-pill">✦ Prom Match</div>
-        </div>
-      </div>
+            <!-- MATCHED PARTNER CARD -->
+            <div class="editorial-paper-card" style="border-color:var(--p-burgundy);">
+              <div class="profile-card-top-tag" style="color:var(--p-burgundy);">YOUR ASSIGNED MATCH</div>
+              <h2 class="profile-card-name" id="m-name-b">Candidate B</h2>
+              <div class="profile-card-sub" id="m-dept-b">ECE S5</div>
+              <p class="profile-card-bio" id="m-bio-b">Passionate about cinema, late night music and great stories.</p>
+              
+              <div class="card-divider-line"></div>
+              
+              <div class="profile-vibe-section">
+                <div class="vibe-section-title">Vibe Match</div>
+                <div class="vibe-pills-row" id="m-vibes-b">
+                  <span class="vibe-pill" id="m-movie-b">Movie Choice</span>
+                </div>
+              </div>
 
-      <div class="overlap-bar">
-        <div class="venue">
-          🎉 <b style="font-family:var(--serif);font-size:17px;color:var(--cream-text);">WELCOME TO THE PROM NIGHT</b>
-          <span style="color:var(--gold);font-size:13px;display:block;">Película · Prom Night</span>
-          <div style="font-size:11.5px;color:var(--muted);margin-top:2px;">25 September 2026 &nbsp;·&nbsp; 7:30 PM — 9:30 PM</div>
-        </div>
-        <div class="stat-mini"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">Assigned Pairing</span><b id="m-seats-summary">Row C · Seats 11 &amp; 12</b></div>
-        <div class="stat-mini"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">Curated Status</span><b>Confirmed Match</b></div>
-      </div>
-
-      <div class="discretion">🔒 <b>Archival Etiquette · Discretion Protocol</b><br>Your Prom Night pairing has been carefully curated. Mutual Instagram handles unlock at the Prom Night Reveal (25 September 2026 · 7:30 PM — 9:30 PM) or upon gala attendance confirmation.</div>
-
-      <!-- COSTUME SUGGESTIONS SECTION -->
-      <div class="paper-card costume-card" style="margin-top:26px;padding:24px 28px;background:var(--bg-void-2);border:1px solid var(--hairline);border-radius:10px;">
-        <div class="eyebrow" style="color:var(--gold);">Curated Styling · Prom Night Attire</div>
-        <h3 style="font-family:var(--serif);font-size:22px;color:var(--cream-text);margin:6px 0 16px;">YOUR PROM NIGHT LOOK</h3>
-        <div class="costume-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-          <div class="costume-col" style="background:var(--bg-void);border:1px solid var(--hairline);border-radius:8px;padding:18px;">
-            <h4 style="font-family:var(--serif);color:var(--gold);margin:0 0 8px;font-size:17px;">FOR HIM</h4>
-            <div id="costume-him-text" style="font-size:13px;color:var(--cream-text);line-height:1.6;">
-              Classic black suit &bull; White tailored shirt &bull; Black or burgundy tie &bull; Polished black shoes &bull; Minimal gold cuff accent
+              <div class="profile-insta-row" style="margin-top:20px;font-size:13px;color:var(--p-ink-muted);">
+                <span>Instagram: <b id="m-insta-b" style="color:var(--p-burgundy);">@username</b></span>
+              </div>
             </div>
+
           </div>
-          <div class="costume-col" style="background:var(--bg-void);border:1px solid var(--hairline);border-radius:8px;padding:18px;">
-            <h4 style="font-family:var(--serif);color:var(--gold);margin:0 0 8px;font-size:17px;">FOR HER</h4>
-            <div id="costume-her-text" style="font-size:13px;color:var(--cream-text);line-height:1.6;">
-              Elegant evening dress &bull; Soft neutral / burgundy / champagne palette &bull; Minimal jewelry &bull; Elegant heels or flats
+
+          <!-- MATCH ACTIONS ROW -->
+          <div class="match-actions-bar" style="margin-top:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+            <div style="display:flex;gap:14px;flex-wrap:wrap;">
+              <button type="button" class="btn-burgundy" id="btnConfirmGala">✓ Confirm Gala Attendance</button>
+              <button type="button" class="btn-outline-editorial" id="btnDownloadTicket">🎟 Download Ticket Pass</button>
             </div>
+            <button type="button" class="btn-outline-editorial" id="status-matched-logout-btn">Log Out</button>
           </div>
-        </div>
-      </div>
 
-      <div class="reveal-actions" style="margin-top:26px;">
-        <button class="btn btn-gold" id="btnConfirmGala">✓ Confirm Gala Attendance</button>
-        <button class="btn btn-outline" id="btnDownloadTicket">🎟 Download Ticket Pass</button>
-        <button class="btn btn-outline" id="status-matched-logout-btn">Log Out</button>
-      </div>
+          <div style="text-align:right;margin-top:24px;">
+            <span class="script-text-dark" style="font-size:24px;">More than a dance. A story.</span>
+          </div>
 
-      <div class="paper-card ticket" style="margin-top:24px;">
-        <div class="qr"></div>
-        <div class="info">
-          <span style="text-transform:uppercase;letter-spacing:.08em;">Admit Two · Película Prom Night</span>
-          <b id="m-ticket-title">Salon Privé Double Pass</b>
-          <span id="m-ticket-serial">Serial: #MATCH-315911-PL-001</span>
         </div>
-        <div class="validated">Validated</div>
       </div>
     </div>
 
-    <!-- Visitor / Lookup status view (no active session) -->
+    <!-- 3. VISITOR / LOOKUP STATUS VIEW (NO ACTIVE SESSION) -->
     <div id="status-lookup" class="hidden">
-      <div class="reveal-head">
-        <div class="eyebrow">Official Selection · Status Lookup</div>
-        <h1 class="h1" style="font-style:italic;">Prom Dossier Status Check</h1>
-        <p class="lede" style="margin:0 auto;">Enter your unique access code to check your Prom Night registration status.</p>
-      </div>
+      <div class="status-editorial-wrapper">
+        <div class="status-header-center">
+          <div class="editorial-eyebrow">STUDENT ACCESS</div>
+          <h1 class="editorial-title" style="text-align:center;">Check Your Status</h1>
+          <p class="editorial-subtitle" style="text-align:center;max-width:480px;margin:8px auto 0 auto;">Enter your registration access code to check your status or view your match.</p>
+        </div>
 
-      <div class="paper-card gate-card" style="margin-top:24px;">
-        <h2>Check Your Dossier</h2>
-        <p>Enter your registration details exactly as submitted.</p>
-        <form id="lookupForm" novalidate>
-          <div class="field">
-            <label>YOUR ACCESS CODE</label>
-            <input type="text" id="l-query" placeholder="e.g. Marion Cotillard or @username">
+        <div class="editorial-paper-card" style="margin-top:32px;max-width:480px;margin-left:auto;margin-right:auto;">
+          <form id="lookupForm" novalidate>
+            <div class="input-field-group">
+              <label for="l-query">YOUR ACCESS CODE</label>
+              <input type="text" id="l-query" class="editorial-input" placeholder="e.g. SC-8A2F">
+            </div>
+            <button type="submit" class="btn-burgundy" style="width:100%;margin-top:20px;">Access Status →</button>
+            <div class="field-err" id="lookupErr" style="margin-top:12px;text-align:center;">No matching dossier found. Please verify your details or register below.</div>
+          </form>
+
+          <div style="text-align:center;margin-top:24px;padding-top:18px;border-top:1px solid var(--p-hairline);">
+            <a href="#/register" class="btn-outline-editorial" style="font-size:12px;">🎟 Register New Profile</a>
           </div>
-          <button type="submit" class="btn btn-gold btn-full" style="margin-top:20px;">Access Dossier Status →</button>
-          <div class="gate-generic-err" id="lookupErr">No matching dossier found. Please verify your details or register below.</div>
-        </form>
-        <div style="text-align:center;margin-top:20px;">
-          <a href="#/register" class="btn btn-outline" style="font-size:11px;color:var(--ink);border-color:#d9c9a8;">🎟 Register New Dossier</a>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -564,10 +808,9 @@
   </div>
 </div>
 
-<footer class="site-footer">
-  <span>Emulsion Side Toward Lens · Nitrate Free</span>
-  <span>© MMXXIV Película Archives · Reel End</span>
-  <a href="#/director-login" class="director-entry-link" id="directorEntryLink" title="Director Room">d</a>
+<footer class="site-footer editorial-footer">
+  <div class="footer-brand">PELÍCULA · PROM NIGHT '26</div>
+  <a href="#/director-login" class="secret-director-trigger" id="directorEntryLink" title="Director Access">d</a>
 </footer>
 
 <!-- Supabase JavaScript client -->

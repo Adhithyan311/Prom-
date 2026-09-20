@@ -146,7 +146,7 @@
 
   /* Hide desktop navigation on phones */
 
-  .nav-links {
+  .nav-links:not(.nav-open) {
     display: none !important;
   }
 

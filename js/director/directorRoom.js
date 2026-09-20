@@ -937,6 +937,10 @@ export async function loadDirectorStudents(
             semester,
             instagram_id,
             favourite_movie,
+            thriller_preference,
+            romance_preference,
+            emotional_preference,
+            action_preference,
             gender,
             match_intent,
             status,
@@ -1087,6 +1091,18 @@ function saveCompatibilityCandidates() {
 
         favourite_movie:
           student.favourite_movie,
+
+        thriller_preference:
+          student.thriller_preference,
+
+        romance_preference:
+          student.romance_preference,
+
+        emotional_preference:
+          student.emotional_preference,
+
+        action_preference:
+          student.action_preference,
 
         gender:
           student.gender,
