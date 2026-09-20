@@ -7,7 +7,6 @@ Vintage-35mm film-festival themed matchmaking site for a college prom event. Sta
 ## Folder structure
 ```
 
-
 ## Routes
 
 - `#/experience` — landing page (default)
@@ -47,3 +46,4 @@ Then open `http://localhost:8000`.
 - `js/storage/` is a legacy localStorage-based layer from before the Supabase migration. It's still used internally as a compatibility bridge for the Participants Directory view, but all real data lives in Supabase — don't treat `localStorage` as a source of truth.
 - `tests/` holds standalone Node scripts that exercise validation and the matching algorithm (director/registration/matching flow checks) — run individually with Node, not a test runner.
 - See the pre-deployment audit report for the full security/QA writeup and the reasoning behind `migration_fixes.sql`.
+
