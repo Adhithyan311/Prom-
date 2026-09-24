@@ -504,30 +504,50 @@ export async function renderMatchesList() {
 
 
     /* ========================================================
-       FETCH STUDENTS IN ONE QUERY
+       FETCH STUDENTS IN CHUNKS (PREVENT URI TOO LONG ERROR)
     ======================================================== */
 
-    const {
-      data: students,
-      error: studentError
-    } =
-      await client
-        .from("students")
-        .select(`
-          id,
-          name,
-          department,
-          semester,
-          instagram_id,
-          favourite_movie,
-          gender,
-          match_intent,
-          status
-        `)
-        .in(
-          "id",
-          studentIds
-        );
+    const chunkSize = 50;
+    const studentChunks = [];
+    for (let i = 0; i < studentIds.length; i += chunkSize) {
+      studentChunks.push(studentIds.slice(i, i + chunkSize));
+    }
+
+    let students = [];
+    let studentError = null;
+
+    try {
+      const studentResults = await Promise.all(
+        studentChunks.map(chunk =>
+          client
+            .from("students")
+            .select(`
+              id,
+              name,
+              department,
+              semester,
+              instagram_id,
+              favourite_movie,
+              gender,
+              match_intent,
+              status
+            `)
+            .in("id", chunk)
+        )
+      );
+
+      for (const res of studentResults) {
+        if (res.error) {
+          studentError = res.error;
+          break;
+        }
+        if (res.data) {
+          students.push(...res.data);
+        }
+      }
+    } catch (err) {
+      studentError = err;
+    }
 
 
     if (studentError) {

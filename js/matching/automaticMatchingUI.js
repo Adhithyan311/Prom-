@@ -1006,25 +1006,44 @@ async function createAutomaticDrafts() {
 
 
     // ========================================================
-    // ONE DATABASE QUERY
+    // FETCH STUDENTS IN CHUNKS (PREVENT URI TOO LONG ERROR)
     // ========================================================
 
-    const {
-      data: latestStudents,
-      error: studentError
-    } =
-      await client
-        .from("students")
-        .select(`
-          id,
-          gender,
-          status
-        `)
-        .in(
-          "id",
-          studentIds
-        );
+    const chunkSize = 50;
+    const studentChunks = [];
+    for (let i = 0; i < studentIds.length; i += chunkSize) {
+      studentChunks.push(studentIds.slice(i, i + chunkSize));
+    }
 
+    let latestStudents = [];
+    let studentError = null;
+
+    try {
+      const studentResults = await Promise.all(
+        studentChunks.map(chunk =>
+          client
+            .from("students")
+            .select(`
+              id,
+              gender,
+              status
+            `)
+            .in("id", chunk)
+        )
+      );
+
+      for (const res of studentResults) {
+        if (res.error) {
+          studentError = res.error;
+          break;
+        }
+        if (res.data) {
+          latestStudents.push(...res.data);
+        }
+      }
+    } catch (err) {
+      studentError = err;
+    }
 
     if (studentError) {
       throw studentError;
